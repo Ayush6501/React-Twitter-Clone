@@ -9,7 +9,7 @@ import {
     EmojiEmotionsOutlined,
     InsertInvitationOutlined,
 } from '@material-ui/icons';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {storage} from "./firebase";
 import db from "./firebase";
 
@@ -17,7 +17,7 @@ const Tweetbox = () => {
     const userPhoto = useSelector(selectUserPhoto);
     const userName = useSelector(selectUserName);
 
-    const [message, setMessage] = useState('Click on the image icon below to add an image')
+    const [message, setMessage] = useState('Click on your PF in the bottom left corner to Sign Out!')
     const [tweetMessage, setTweetMessage] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [imageFile, setImageFile] = useState(null);
@@ -29,6 +29,7 @@ const Tweetbox = () => {
     }
 
     const uploadHandler = (event) => {
+        setMessage('Image Uploading...')
         event.preventDefault()
         const ref = storage.ref(`/images/${imageFile.name}`);
         const uploadTask = ref.put(imageFile);
@@ -59,6 +60,13 @@ const Tweetbox = () => {
       setImageUrl("");
       setImageFile('Click on the image icon below to add an image');
     };
+
+    useEffect(() => {
+        setTimeout(() => {
+            setMessage('Click on the image icon below to add an image');
+        }, 4000);
+    }, []);
+
 
     return (
         <TweetBox>

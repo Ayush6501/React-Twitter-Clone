@@ -103,9 +103,11 @@ const PostHeaderText = styled.div`
   
   h3 {
     margin: 0;
+    display: ruby;
 
     @media (max-width: 568px) {
       font-size: 14px;
+      display: initial;
     }
   }
 `;
@@ -138,6 +140,10 @@ const PostFooter = styled.div`
 
   .MuiSvgIcon-root {
     color: lightgray;
+    
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 

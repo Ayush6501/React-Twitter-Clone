@@ -57,7 +57,7 @@ const Login = () => {
                     <CTALogo>
                         <img src="/images/twitter_png.png" alt=""/>
                     </CTALogo>
-                    <h1>Happening Now</h1>
+                    <h1>Happening now</h1>
                     <h2>Join Twitter Today</h2>
                     <SignUp onClick={authHandler}>Sign Up</SignUp>
                     <LogIn onClick={authHandler}>Log In</LogIn>
@@ -167,13 +167,16 @@ const CTA = styled.div`
     font-size: 64px;
     line-height: 62px;
     text-align: left;
-    font-weight: bold;
+    font-weight: 800;
+    font-family: Poppins;
   }
   
   h2 {
     display: flex;
     align-items: flex-start;
     font-size: 31px;
+    font-family: Poppins;
+    font-weight: normal;
   }
 
   @media (max-width: 768px) {

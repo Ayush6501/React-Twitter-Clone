@@ -53,10 +53,9 @@ const Sidebar = () => {
                 <TweetButton variant='outlined'>Tweet</TweetButton>
             </Container>
             <SignOut>
-                <Avatar src={userPhoto}/>
-                <DropDown>
-                    <span onClick={authHandler}>Sign Out</span>
-                </DropDown>
+                <AvatarComponent onClick={authHandler}>
+                    <Avatar src={userPhoto}/>
+                </AvatarComponent>
                 <CTA>
                     <UserDetails>
                         <h3>{userName}</h3>
@@ -87,6 +86,7 @@ const SidebarComponent = styled.div`
   max-width: max-content;
 `;
 
+
 const Container = styled.div`
   margin: 0px 30px;
   padding: 0;
@@ -100,7 +100,6 @@ const Container = styled.div`
 const DropDown = styled.div`
   position: absolute;
   bottom: 38px;
-  right: 0;
   left: 30px;
   background-color: rgb(19, 19, 19);
   border: 1px solid rgba(151, 151, 151, 0.34);
@@ -124,13 +123,6 @@ const SignOut = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  &:hover {
-    ${DropDown} {
-      opacity: 1;
-      transition-duration: 1s;
-    }
-  }
-
   @media (max-width: 568px) {
     margin: 0 10px;
   }
@@ -151,6 +143,7 @@ const SignOutButton = styled.div`
       opacity: 1;
       transition-duration: 1s;
     }
+    cursor: pointer;
   }
 `;
 
@@ -190,5 +183,7 @@ const TwitterIcon = styled.div`
     font-size: 40px;
   }
 `;
+
+const AvatarComponent = styled.div``;
 
 export default Sidebar;
