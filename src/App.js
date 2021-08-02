@@ -4,7 +4,6 @@ import Home from "./components/Home";
 import {useSelector} from "react-redux";
 import {selectUserName} from "./feature/user/userSlice";
 
-
 function App() {
     const username = useSelector(selectUserName);
 

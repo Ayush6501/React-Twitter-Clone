@@ -3,7 +3,7 @@ import {auth, provider} from "./firebase";
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {selectUserName, selectUserPhoto,setUserLoginDetails} from "../feature/user/userSlice";
-import {useEffect} from "react";
+import {useCallback, useEffect} from "react";
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -12,6 +12,17 @@ const Login = () => {
     // const userEmail = useSelector(selectUserEmail);
     const userPhoto = useSelector(selectUserPhoto);
 
+    const setUser = useCallback((user) => {
+        dispatch(
+            setUserLoginDetails({
+                name: user.displayName,
+                email: user.email,
+                photo: user.photoURL,
+            })
+        );
+        console.log(username, userPhoto);
+    }, [userPhoto, username, dispatch]);
+
     useEffect(() => {
         auth.onAuthStateChanged(async (user) => {
             if(user) {
@@ -19,7 +30,7 @@ const Login = () => {
                 history.push('/home');
             }
         });
-    }, [username, history]);
+    }, [username, setUser, history]);
 
     const authHandler = () => {
         auth.signInWithPopup(provider)
@@ -30,17 +41,6 @@ const Login = () => {
                 alert(error.message);
         });
     }
-
-    const setUser = (user) => {
-        dispatch(
-            setUserLoginDetails({
-                name: user.displayName,
-                email: user.email,
-                photo: user.photoURL,
-            })
-        );
-        console.log(username, userPhoto);
-    };
 
     return (
         <Container>
