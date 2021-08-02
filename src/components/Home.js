@@ -3,7 +3,6 @@ import Feed from "./Feed/Feed";
 import styled from "styled-components";
 import Widget from "./Widgets/Widget";
 
-
 const Home = () => {
     return (
         <Container>

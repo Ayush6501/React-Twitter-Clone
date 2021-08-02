@@ -6,7 +6,6 @@ import {
 import {Search} from "@material-ui/icons";
 import {selectUserName} from "../../feature/user/userSlice";
 import {useSelector} from "react-redux";
-import { Timeline } from 'react-twitter-widgets';
 
 const Widget = () => {
     const userName = useSelector(selectUserName);
@@ -27,15 +26,6 @@ const Widget = () => {
                         height: 400,
                         color: 'blue',
                         id: 'profile:Arsenal'
-                    }}
-                />
-                <Timeline
-                    dataSource={{
-                        sourceType: 'profile',
-                        screenName: 'TwitterDev'
-                    }}
-                    options={{
-                        height: '400'
                     }}
                 />
             </WidgetContainer>
